@@ -1,13 +1,13 @@
 module SI
   class << self
-    def convert num, options = {}
-      options = { :length => options } if options.is_a?(Fixnum)
+    def convert(num, options = {})
+      options = { length: options } if options.is_a?(Integer)
       options = DEFAULT.merge(options)
-      length,
-      min_exp,
-      max_exp = options.values_at(:length, :min_exp, :max_exp)
-      raise ArgumentError.new("Invalid length") if length < 2
-      return num.is_a?(Fixnum) ? '0' : "0.#{'0' * (length - 1)}" if num == 0
+      units = PREFIXES.merge(options[:units] || {})
+
+      length, min_exp, max_exp = options.values_at(:length, :min_exp, :max_exp)
+      raise ArgumentError, 'Invalid length' if length < 2
+      return num.is_a?(Integer) ? '0' : "0.#{'0' * (length - 1)}" if num.zero?
 
       base    = options[:base].to_f
       minus   = num < 0 ? '-' : ''

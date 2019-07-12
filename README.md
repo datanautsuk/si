@@ -55,7 +55,7 @@ require 'si'
 ```ruby
 9876543210000.si(:length => 5)  # '9.8765T'
 
-# For convenience, a single Fixnum is recognized as :length value
+# For convenience, a single Integer is recognized as :length value
 9876543210000.si(5)             # '9.8765T'
 ```
 

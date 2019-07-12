@@ -1,15 +1,21 @@
+# frozen_string_literal: true
+
+# patch float
 class Float
   include SI
 end
 
-class Fixnum
+# patch Integer
+class Integer
   include SI
 end
 
-class Bignum
-  include SI
-end
-
+# patch Rational
 class Rational
+  include SI
+end
+
+# Patch BD
+class BigDecimal
   include SI
 end
